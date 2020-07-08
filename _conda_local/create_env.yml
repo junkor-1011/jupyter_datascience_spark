@@ -28,6 +28,7 @@ dependencies:
   - scipy
   - dask
   - xarray
+  - numexpr
   - h5py
   - swifter
   - networkx
@@ -78,7 +79,7 @@ dependencies:
   - psycopg2
   # Others
   - gcc_linux-64
-  # - gxx_linux-64
+  - gxx_linux-64
   - selenium
   - geckodriver
   - firefox
