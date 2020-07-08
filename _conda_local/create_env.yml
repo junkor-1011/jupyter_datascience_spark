@@ -1,3 +1,4 @@
+# Note: for Linux_x64
 name: jupyter_datascience_spark
 channels:
   - pyviz
@@ -12,6 +13,7 @@ dependencies:
   - pyspark==3.*
   - pyarrow
   - fastparquet
+  - python-hdfs
   # for jupyter (& utils)
   - jupyterlab
   - nodejs
@@ -26,6 +28,7 @@ dependencies:
   - scipy
   - dask
   - xarray
+  - h5py
   - swifter
   - networkx
   - python-igraph
@@ -74,6 +77,8 @@ dependencies:
   - alembic
   - psycopg2
   # Others
+  - gcc_linux-64
+  # - gxx_linux-64
   - selenium
   - geckodriver
   - firefox
@@ -81,7 +86,7 @@ dependencies:
   - cython
   - watermark
   - scikit-image
-  - opencv2
+  - opencv
   - nltk
   # DEBUG
   - pytest
