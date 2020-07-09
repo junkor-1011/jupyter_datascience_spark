@@ -142,5 +142,5 @@ RUN jupyter labextension install jupyterlab_vim
 
 EXPOSE 8888
 
-ENTRYPOINT ["tini", "-g", "--"]
+# ENTRYPOINT ["tini", "-g", "--"]
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--NotebookApp.token=''"]

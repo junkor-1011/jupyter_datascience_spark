@@ -106,4 +106,4 @@ dependencies:
     - graphframes
     # - sqlalchemy-views>=0.2
   # tini
-    - tini==0.18.0
+    # - tini==0.18.0
