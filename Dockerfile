@@ -98,7 +98,8 @@ RUN cd /tmp && \
 
 # install packages
 RUN conda env update -n base -f /tmp/conda_packages.yml && \
-    conda clean -tipsy
+    conda clean --all -f -y
+    # conda clean -tipsy
 
     # conda clean --all -f -y && \
     # npm cache clean --force && \
