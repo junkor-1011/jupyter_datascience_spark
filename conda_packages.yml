@@ -7,7 +7,7 @@ channels:
 dependencies:
   # core
   # - python>=3.7
-  - python==3.7.*
+  # - python==3.7.*
   # for pyspark
   # - openjdk==8.*
   # - pyspark==3.*

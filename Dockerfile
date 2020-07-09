@@ -13,6 +13,7 @@ RUN apt-get clean && \
     locales \
     bash \
     sudo \
+    git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
     # build-essential \
@@ -97,11 +98,13 @@ RUN cd /tmp && \
 
 # install packages
 RUN conda env update -n base -f /tmp/conda_packages.yml && \
-    conda clean --all -f -y && \
-    npm cache clean --force && \
-    jupyter notebook --generate-config && \
-    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    rm -rf $HOME/.cache/yarn
+    conda clean -tipsy
+
+    # conda clean --all -f -y && \
+    # npm cache clean --force && \
+    # jupyter notebook --generate-config && \
+    # rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    # rm -rf $HOME/.cache/yarn
 
 
 # Configration
@@ -136,11 +139,18 @@ RUN wget https://ipafont.ipa.go.jp/IPAexfont/ipaexg00401.zip \
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 RUN jupyter labextension install jupyter-matplotlib
 RUN jupyter labextension install @lckr/jupyterlab_variableinspector
-RUN jupyter labextension install @jupyterlab/toc
-RUN jupyter labextension install jupyterlab_vim
+# RUN jupyter labextension install @jupyterlab/toc
+# RUN jupyter labextension install jupyterlab_vim
 # RUN jupyter labextension install @krassowski/jupyterlab-lsp     # for JupyterLab 2.x
 
 EXPOSE 8888
 
+# TINI
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
+
+ENTRYPOINT [ "/usr/bin/tini", "--" ]
 # ENTRYPOINT ["tini", "-g", "--"]
+
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--NotebookApp.token=''"]
