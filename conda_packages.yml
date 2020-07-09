@@ -1,0 +1,109 @@
+# Note: for Linux_x64
+# name: jupyter_datascience_spark
+channels:
+  - pyviz
+  - conda-forge
+  - defaults
+dependencies:
+  # core
+  # - python>=3.7
+  - python==3.7.*
+  # for pyspark
+  # - openjdk==8.*
+  # - pyspark==3.*
+  - pyarrow
+  - fastparquet
+  - python-hdfs
+  # for jupyter (& utils)
+  - jupyterlab
+  - nodejs
+  - ipympl
+  - ipywidgets
+  - ipyparallel
+  - memory_profiler
+  - pyprind
+  # data-science & data-handling (General)
+  - pandas>=1.0
+  - numpy
+  - scipy
+  - dask
+  - xarray
+  - numexpr
+  - h5py
+  - swifter
+  - networkx
+  - python-igraph
+  - statsmodels
+  - scikit-learn
+  # Machine Learning (Extra)
+  - xgboost
+  - lightgbm
+  - catboost
+  - optuna
+  - umap-learn
+  - featuretools
+  - imbalanced-learn
+  - somoclu
+  # - hyperopt
+  # Machine Learning (tensorflow)
+  - tensorflow==2.*
+  - tensorflow-datasets
+  # plot & visualization
+  - seaborn
+  - matplotlib
+  - bokeh
+  - plotly
+  - holoviews
+  - hvplot
+  - graphviz
+  - pygraphviz
+  - pydotplus
+  - d3
+  # Geo
+  - folium
+  - ipyleaflet
+  - osmnx
+  - geopandas
+  - geojson
+  - geopy
+  - shapely
+  - gdal==2.*
+  - cartopy
+  - geoviews
+  - geoplot
+  - splot
+  - geoalchemy2
+  # DB
+  - sqlalchemy
+  - alembic
+  - psycopg2
+  # Others
+  - gcc_linux-64
+  - gxx_linux-64
+  - selenium
+  - geckodriver
+  - firefox
+  - numba
+  - cython
+  - watermark
+  - scikit-image
+  - opencv
+  - nltk
+  # DEBUG
+  - pytest
+  - tox
+  - ipdb
+  - pudb
+  - python-language-server
+  # pip-package
+  - pip:
+    - bhtsne
+    - Boruta
+    - mca
+    - pandas-bokeh
+    - py_d3
+    - smopy
+    - graphframes
+    # - sqlalchemy-views>=0.2
+  # tini
+    - tini==0.18.0
