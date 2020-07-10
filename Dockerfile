@@ -31,12 +31,18 @@ RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
 
+# TINI
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+RUN chmod +x /usr/bin/tini
+
+
 # user
 # ref:
 # https://zukucode.com/2019/06/docker-user.html
 # https://qiita.com/Riliumph/items/3b09e0804d7a04dff85b
 # 一般ユーザーアカウントを追加
-ENV USER_NAME=user
+ARG USER_NAME=user
 ARG USER_UID=1000
 ARG PASSWD=password
 
@@ -50,10 +56,13 @@ RUN useradd -m -s /bin/bash -u ${USER_UID} ${USER_NAME} && \
 
 # conda
 ENV CONDA_DIR=/opt/conda \
+    CONDA_BASE_DIR=/opt/conda_base \
     HOME=/home/$USER_NAME \
     SHELL=/bin/bash
 RUN mkdir -p $CONDA_DIR && \
-    chown $USER_NAME:$USER_UID $CONDA_DIR
+    mkdir -p $CONDA_BASE_DIR && \
+    chown $USER_NAME:$USER_UID $CONDA_DIR && \
+    chown $USER_NAME:$USER_UID $CONDA_BASE_DIR
 # conda package-info
 COPY ./conda_packages.yml /tmp/conda_packages.yml
 
@@ -76,7 +85,7 @@ ENV PATH=${CONDA_DIR}/bin:$PATH
 RUN cd /tmp && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}.sh && \
     echo "${MINICONDA_MD5} *Miniconda3-${MINICONDA_VERSION}.sh" | md5sum -c - && \
-    /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_DIR && \
+    /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_BASE_DIR && \
     rm Miniconda3-${MINICONDA_VERSION}.sh
     # && \
     # echo "conda ${CONDA_VERSION}" >> $CONDA_DIR/conda-meta/pinned && \
@@ -97,8 +106,15 @@ RUN cd /tmp && \
 #     conda clean --all -f -y
 
 # install packages
-RUN conda env update -n base -f /tmp/conda_packages.yml && \
-    conda clean --all -f -y
+RUN $CONDA_BASE_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
+    $CONDA_BASE_DIR/bin/conda clean --all -f -y && \
+    rm -rf $HOME/.cache/*
+USER root
+RUN rm -rf $CONDA_BASE_DIR
+USER ${USER_UID}
+#   && rm -rf $CONDA_BASE_DIR
+# RUN conda env update -n base -f /tmp/conda_packages.yml && \
+#     conda clean --all -f -y
     # conda clean -tipsy
 
     # conda clean --all -f -y && \
@@ -140,16 +156,12 @@ RUN wget https://ipafont.ipa.go.jp/IPAexfont/ipaexg00401.zip \
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 RUN jupyter labextension install jupyter-matplotlib
 RUN jupyter labextension install @lckr/jupyterlab_variableinspector
-# RUN jupyter labextension install @jupyterlab/toc
+RUN jupyter labextension install @jupyterlab/toc
 # RUN jupyter labextension install jupyterlab_vim
 # RUN jupyter labextension install @krassowski/jupyterlab-lsp     # for JupyterLab 2.x
 
 EXPOSE 8888
 
-# TINI
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 # ENTRYPOINT ["tini", "-g", "--"]

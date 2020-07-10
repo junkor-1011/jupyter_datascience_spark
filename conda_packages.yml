@@ -1,5 +1,5 @@
 # Note: for Linux_x64
-# name: jupyter_datascience_spark
+name: jupyter_datascience_spark
 channels:
   - pyviz
   - conda-forge
@@ -7,7 +7,7 @@ channels:
 dependencies:
   # core
   # - python>=3.7
-  # - python==3.7.*
+  - python==3.7.*
   # for pyspark
   # - openjdk==8.*
   # - pyspark==3.*
@@ -105,5 +105,4 @@ dependencies:
     - smopy
     - graphframes
     # - sqlalchemy-views>=0.2
-  # tini
-    # - tini==0.18.0
+prefix: /opt/conda
