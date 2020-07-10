@@ -16,8 +16,8 @@ dependencies:
   - fastparquet
   - python-hdfs
   # for jupyter (& utils)
-  - jupyterlab==1.0.*
-  # - jupyterlab==1.*
+  # - jupyterlab==1.0.*
+  - jupyterlab==1.*
   - nodejs
   - ipympl
   - ipywidgets
@@ -74,10 +74,10 @@ dependencies:
   - geoviews
   - geoplot
   - splot
-  - geoalchemy2
+  # - geoalchemy2
   # DB
   - sqlalchemy
-  - alembic
+  # - alembic
   - psycopg2
   # Others
   - gcc_linux-64
@@ -96,7 +96,7 @@ dependencies:
   # - tox
   # - ipdb
   # - pudb
-  - python-language-server
+  # - python-language-server
   # pip-package
   - pip:
     - bhtsne
@@ -106,5 +106,6 @@ dependencies:
     - py_d3
     - smopy
     - graphframes
+    - python-language-server[all]
     # - sqlalchemy-views>=0.2
 prefix: /opt/conda
