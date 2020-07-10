@@ -107,11 +107,14 @@ RUN cd /tmp && \
 
 # install packages
 RUN $CONDA_BASE_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
-    $CONDA_BASE_DIR/bin/conda clean --all -f -y && \
     rm -rf $HOME/.cache/*
-USER root
-RUN rm -rf $CONDA_BASE_DIR
-USER ${USER_UID}
+RUN rm -rf $CONDA_BASE_DIR/*
+
+    # $CONDA_BASE_DIR/bin/conda clean --all -f -y && \
+
+# USER root
+# RUN rm -rf $CONDA_BASE_DIR
+# USER ${USER_UID}
 #   && rm -rf $CONDA_BASE_DIR
 # RUN conda env update -n base -f /tmp/conda_packages.yml && \
 #     conda clean --all -f -y
@@ -157,8 +160,10 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
 RUN jupyter labextension install jupyter-matplotlib
 RUN jupyter labextension install @lckr/jupyterlab_variableinspector
 RUN jupyter labextension install @jupyterlab/toc
-# RUN jupyter labextension install jupyterlab_vim
+RUN jupyter labextension install jupyterlab_vim
+RUN jupyter labextension install @krassowski/jupyterlab-lsp@0.8.0
 # RUN jupyter labextension install @krassowski/jupyterlab-lsp     # for JupyterLab 2.x
+RUN rm -rf ~/.cache/yarn/*
 
 EXPOSE 8888
 
