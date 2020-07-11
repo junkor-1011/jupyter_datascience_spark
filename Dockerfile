@@ -99,13 +99,14 @@ ENV JAVA_HOME=/opt/java/openjdk \
 ARG PY4J_VER=0.10.9
 ENV SPARK_HOME=/usr/local/spark
 ENV PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-${PY4J_VER}-src.zip \
-    SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
+    SPARK_OPTS="--conf spark.jars.packages=graphframes:graphframes:0.8.0-spark3.0-s_2.12" \
     PATH=$PATH:${SPARK_HOME}/bin \
     PYSPARK_PYTHON=${CONDA_DIR}/bin/python \
     PYSPARK_DRIVER=${CONDA_DIR}/bin/python
+    # SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
 
 # add jar
-RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12
+# RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12
 
 # FONT
 RUN mkdir ~/.fonts \

@@ -56,7 +56,7 @@ dependencies:
   - plotly
   - holoviews
   - hvplot
-  # - graphviz
+  - graphviz
   - pygraphviz
   - pydotplus
   - d3
