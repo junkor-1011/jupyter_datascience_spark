@@ -3,6 +3,8 @@ version: '3'
 services:
   jupyter_test:
     image: ${image:-jupyter_datascience_spark:latest}
+    volumes:
+      - ./work:/home/${user:-user}/work
     privileged: true
     ports:
       - "${PORT:-8888}:8888"

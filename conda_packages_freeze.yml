@@ -19,7 +19,7 @@ dependencies:
   - aws-sdk-cpp=1.7.164=hc831370_1
   - backcall=0.2.0=pyh9f0ad1d_0
   - beautifulsoup4=4.9.1=py37hc8dfbb8_0
-  - binutils_impl_linux-64=2.34=h53a641e_5
+  - binutils_impl_linux-64=2.34=h53a641e_6
   - binutils_linux-64=2.34=hc952b39_20
   - bleach=3.1.5=pyh9f0ad1d_0
   - blinker=1.4=py_1
@@ -164,7 +164,7 @@ dependencies:
   - krb5=1.17.1=hfafb76e_1
   - lame=3.100=h14c3975_1001
   - lcms2=2.11=hbd6801e_0
-  - ld_impl_linux-64=2.34=h53a641e_5
+  - ld_impl_linux-64=2.34=h53a641e_6
   - libblas=3.8.0=16_openblas
   - libcblas=3.8.0=16_openblas
   - libclang=9.0.1=default_hde54327_0
@@ -344,7 +344,7 @@ dependencies:
   - seaborn-base=0.10.1=py_1
   - selenium=3.141.0=py37h8f50634_1001
   - send2trash=1.5.0=py_0
-  - setuptools=49.1.0=py37hc8dfbb8_0
+  - setuptools=49.1.1=py37hc8dfbb8_0
   - shapely=1.7.0=py37hc88ce51_3
   - six=1.15.0=pyh9f0ad1d_0
   - snappy=1.1.8=he1b5a44_3
@@ -449,3 +449,4 @@ dependencies:
     - ujson==1.35
     - yapf==0.30.0
 prefix: /opt/conda
+
