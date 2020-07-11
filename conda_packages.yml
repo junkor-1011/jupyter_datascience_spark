@@ -1,4 +1,5 @@
 # Note: for Linux_x64
+# ToDo: numpy runtime warning
 name: jupyter_datascience_spark
 channels:
   - pyviz

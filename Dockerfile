@@ -100,21 +100,11 @@ RUN cd /tmp && \
     # conda install --quiet --yes pip && \
     # conda update --all --quiet --yes
 
-# install tini
-# run conda install --quiet --yes 'tini=0.18.0' && \
-#     conda list tini | grep tini | tr -s ' ' | cut -d ' ' -f 1,2 >> $CONDA_DIR/conda-meta/pinned && \
-#     conda clean --all -f -y
-
 # install packages
 RUN $CONDA_BASE_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
-    rm -rf $HOME/.cache/*
-RUN rm -rf $CONDA_BASE_DIR/*
+    rm -rf $HOME/.cache/* && \
+    rm -rf $CONDA_BASE_DIR/*
 
-    # $CONDA_BASE_DIR/bin/conda clean --all -f -y && \
-
-# USER root
-# RUN rm -rf $CONDA_BASE_DIR
-# USER ${USER_UID}
 #   && rm -rf $CONDA_BASE_DIR
 # RUN conda env update -n base -f /tmp/conda_packages.yml && \
 #     conda clean --all -f -y
@@ -156,14 +146,14 @@ RUN wget https://ipafont.ipa.go.jp/IPAexfont/ipaexg00401.zip \
     && rm -rf ~/.cache/* \
     && fc-cache -fv
 
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
-RUN jupyter labextension install jupyter-matplotlib
-RUN jupyter labextension install @lckr/jupyterlab_variableinspector
-RUN jupyter labextension install @jupyterlab/toc
-RUN jupyter labextension install jupyterlab_vim
-RUN jupyter labextension install @krassowski/jupyterlab-lsp@0.8.0
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+    jupyter labextension install jupyter-matplotlib && \
+    jupyter labextension install @lckr/jupyterlab_variableinspector && \
+    jupyter labextension install @jupyterlab/toc && \
+    jupyter labextension install jupyterlab_vim && \
+    jupyter labextension install @krassowski/jupyterlab-lsp@0.8.0 && \
+    rm -rf ~/.cache/yarn/*
 # RUN jupyter labextension install @krassowski/jupyterlab-lsp     # for JupyterLab 2.x
-RUN rm -rf ~/.cache/yarn/*
 
 EXPOSE 8888
 
