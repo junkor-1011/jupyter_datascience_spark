@@ -106,7 +106,9 @@ dependencies:
     - pandas-bokeh
     - py_d3
     - smopy
+    # - mplleaflet
     - graphframes
+    - jupyter-lsp
     - python-language-server[all]
     # - sqlalchemy-views>=0.2
 prefix: /opt/conda
