@@ -2,9 +2,12 @@ version: '3'
 
 services:
   jupyter_test:
-    image: jupyter_datascience_spark:latest
+    image: ${image:-jupyter_datascience_spark:latest}
+    volumes:
+      - ./work:/home/${user:-user}/work
     privileged: true
     ports:
       - "${PORT:-8888}:8888"
+      - "${SPARKUI_PORT:-4040}:4040"
     restart: unless-stopped
     command: jupyter lab --ip=0.0.0.0 --port=8888 --NotebookApp.token=''

@@ -14,11 +14,11 @@ RUN apt-get clean && \
     bash \
     sudo \
     git \
+    graphviz \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
     # build-essential \
-# todo: 要不要の選別など
-
+# todo: selection package
 
 
 # SPARK
@@ -41,7 +41,6 @@ RUN chmod +x /usr/bin/tini
 # ref:
 # https://zukucode.com/2019/06/docker-user.html
 # https://qiita.com/Riliumph/items/3b09e0804d7a04dff85b
-# 一般ユーザーアカウントを追加
 ARG USER_NAME=user
 ARG USER_UID=1000
 ARG PASSWD=password
@@ -51,18 +50,16 @@ RUN useradd -m -s /bin/bash -u ${USER_UID} ${USER_NAME} && \
     echo "${USER_NAME}:${PASSWD}" | chpasswd && \
     echo "${USER_NAME} ALL=(ALL) ALL" >> /etc/sudoers && \
     chmod g+w /etc/passwd
-# 一般ユーザーにsudo権限を付与
-#RUN gpasswd -a ${UID} sudo
 
 # conda
 ENV CONDA_DIR=/opt/conda \
-    CONDA_BASE_DIR=/opt/conda_base \
+    CONDA_TMP_DIR=/tmp/conda \
     HOME=/home/$USER_NAME \
     SHELL=/bin/bash
 RUN mkdir -p $CONDA_DIR && \
-    mkdir -p $CONDA_BASE_DIR && \
+    mkdir -p $CONDA_TMP_DIR && \
     chown $USER_NAME:$USER_UID $CONDA_DIR && \
-    chown $USER_NAME:$USER_UID $CONDA_BASE_DIR
+    chown $USER_NAME:$USER_UID $CONDA_TMP_DIR
 # conda package-info
 COPY ./conda_packages.yml /tmp/conda_packages.yml
 
@@ -77,54 +74,19 @@ WORKDIR $HOME
 ARG PYTHON_VERSION=default
 # miniconda
 # ARG MINICONDA_VERSION=py38_4.8.3-Linux-x86_64
-ARG MINICONDA_VERSION=py37_4.8.3-Linux-x86_64
 # ARG MINICONDA_MD5=d63adf39f2c220950a063e0529d4ff74
+ARG MINICONDA_VERSION=py37_4.8.3-Linux-x86_64
 ARG MINICONDA_MD5=751786b92c00b1aeae3f017b781018df
 ENV PATH=${CONDA_DIR}/bin:$PATH
 
 RUN cd /tmp && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}.sh && \
     echo "${MINICONDA_MD5} *Miniconda3-${MINICONDA_VERSION}.sh" | md5sum -c - && \
-    /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_BASE_DIR && \
-    rm Miniconda3-${MINICONDA_VERSION}.sh
-    # && \
-    # echo "conda ${CONDA_VERSION}" >> $CONDA_DIR/conda-meta/pinned && \
-    # conda config --system --prepend channels conda-forge && \
-    # conda config --system --set auto_update_conda false && \
-    # conda config --system --set show_channel_urls true && \
-    # conda config --system --set channel_priority strict && \
-    # if [ ! $PYTHON_VERSION = 'default' ]; then conda install --yes python=$PYTHON_VERSION; fi && \
-    # conda list python | grep '^python ' | tr -s ' ' | cut -d '.' -f 1,2 | sed 's/$/.*/' >> $CONDA_DIR/conda-meta/pinned
-    # && \
-    # conda install --quiet --yes conda && \
-    # conda install --quiet --yes pip && \
-    # conda update --all --quiet --yes
-
-# install tini
-# run conda install --quiet --yes 'tini=0.18.0' && \
-#     conda list tini | grep tini | tr -s ' ' | cut -d ' ' -f 1,2 >> $CONDA_DIR/conda-meta/pinned && \
-#     conda clean --all -f -y
-
-# install packages
-RUN $CONDA_BASE_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
-    rm -rf $HOME/.cache/*
-RUN rm -rf $CONDA_BASE_DIR/*
-
-    # $CONDA_BASE_DIR/bin/conda clean --all -f -y && \
-
-# USER root
-# RUN rm -rf $CONDA_BASE_DIR
-# USER ${USER_UID}
-#   && rm -rf $CONDA_BASE_DIR
-# RUN conda env update -n base -f /tmp/conda_packages.yml && \
-#     conda clean --all -f -y
-    # conda clean -tipsy
-
-    # conda clean --all -f -y && \
-    # npm cache clean --force && \
-    # jupyter notebook --generate-config && \
-    # rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
-    # rm -rf $HOME/.cache/yarn
+    /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_TMP_DIR && \
+    rm Miniconda3-${MINICONDA_VERSION}.sh && \
+    $CONDA_TMP_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
+    rm -rf $HOME/.cache/* && \
+    rm -rf $CONDA_TMP_DIR/*
 
 
 # Configration
@@ -148,27 +110,26 @@ RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.
 # FONT
 RUN mkdir ~/.fonts \
     && chown ${USER_NAME} ~/.fonts \
-    && chmod 755 ~/.fonts
-RUN wget https://ipafont.ipa.go.jp/IPAexfont/ipaexg00401.zip \
+    && chmod 755 ~/.fonts \
+    && wget https://ipafont.ipa.go.jp/IPAexfont/ipaexg00401.zip \
     && unzip ipaexg00401.zip \
     && mv ipaexg00401 -t ~/.fonts/ \
     && rm ipaexg00401.zip \
     && rm -rf ~/.cache/* \
     && fc-cache -fv
 
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
-RUN jupyter labextension install jupyter-matplotlib
-RUN jupyter labextension install @lckr/jupyterlab_variableinspector
-RUN jupyter labextension install @jupyterlab/toc
-RUN jupyter labextension install jupyterlab_vim
-RUN jupyter labextension install @krassowski/jupyterlab-lsp@0.8.0
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
+    jupyter labextension install jupyter-matplotlib && \
+    jupyter labextension install @lckr/jupyterlab_variableinspector && \
+    jupyter labextension install @jupyterlab/toc && \
+    jupyter labextension install jupyterlab_vim && \
+    jupyter labextension install @krassowski/jupyterlab-lsp@0.8.0 && \
+    rm -rf ~/.cache/yarn/*
 # RUN jupyter labextension install @krassowski/jupyterlab-lsp     # for JupyterLab 2.x
-RUN rm -rf ~/.cache/yarn/*
 
 EXPOSE 8888
 
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
-# ENTRYPOINT ["tini", "-g", "--"]
 
 CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--NotebookApp.token=''"]

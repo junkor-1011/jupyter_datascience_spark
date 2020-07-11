@@ -16,7 +16,6 @@ dependencies:
   - fastparquet
   - python-hdfs
   # for jupyter (& utils)
-  # - jupyterlab==1.0.*
   - jupyterlab==1.*
   - nodejs
   - ipympl
@@ -57,7 +56,7 @@ dependencies:
   - plotly
   - holoviews
   - hvplot
-  - graphviz
+  # - graphviz
   - pygraphviz
   - pydotplus
   - d3
@@ -105,7 +104,9 @@ dependencies:
     - pandas-bokeh
     - py_d3
     - smopy
+    # - mplleaflet
     - graphframes
+    - jupyter-lsp
     - python-language-server[all]
     # - sqlalchemy-views>=0.2
 prefix: /opt/conda

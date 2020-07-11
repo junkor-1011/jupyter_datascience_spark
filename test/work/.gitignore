@@ -1,0 +1,4 @@
+*
+!.gitignore
+!test_jupyterlab_template.ipynb
+!test_jupyternotebook_template.ipynb
