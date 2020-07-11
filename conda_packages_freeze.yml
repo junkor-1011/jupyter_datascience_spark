@@ -344,7 +344,7 @@ dependencies:
   - seaborn-base=0.10.1=py_1
   - selenium=3.141.0=py37h8f50634_1001
   - send2trash=1.5.0=py_0
-  - setuptools=49.1.1=py37hc8dfbb8_0
+  - setuptools=49.1.2=py37hc8dfbb8_0
   - shapely=1.7.0=py37hc88ce51_3
   - six=1.15.0=pyh9f0ad1d_0
   - snappy=1.1.8=he1b5a44_3
@@ -357,7 +357,7 @@ dependencies:
   - sqlalchemy=1.3.18=py37h8f50634_0
   - sqlite=3.32.3=hcee41ef_1
   - statsmodels=0.11.1=py37h8f50634_2
-  - stevedore=2.0.1=py_0
+  - stevedore=3.0.0=py37hc8dfbb8_1
   - swifter=0.305=py37hc8dfbb8_0
   - sympy=1.6.1=py37hc8dfbb8_0
   - tbb=2020.1=hc9558a2_0
@@ -426,6 +426,7 @@ dependencies:
     - flake8==3.8.3
     - graphframes==0.6
     - isort==4.3.21
+    - jupyter-lsp==0.8.0
     - lazy-object-proxy==1.4.3
     - mca==1.0.3
     - mccabe==0.6.1

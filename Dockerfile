@@ -14,6 +14,7 @@ RUN apt-get clean && \
     bash \
     sudo \
     git \
+    graphviz \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
     # build-essential \
@@ -52,13 +53,13 @@ RUN useradd -m -s /bin/bash -u ${USER_UID} ${USER_NAME} && \
 
 # conda
 ENV CONDA_DIR=/opt/conda \
-    CONDA_BASE_DIR=/opt/conda_base \
+    CONDA_TMP_DIR=/tmp/conda \
     HOME=/home/$USER_NAME \
     SHELL=/bin/bash
 RUN mkdir -p $CONDA_DIR && \
-    mkdir -p $CONDA_BASE_DIR && \
+    mkdir -p $CONDA_TMP_DIR && \
     chown $USER_NAME:$USER_UID $CONDA_DIR && \
-    chown $USER_NAME:$USER_UID $CONDA_BASE_DIR
+    chown $USER_NAME:$USER_UID $CONDA_TMP_DIR
 # conda package-info
 COPY ./conda_packages.yml /tmp/conda_packages.yml
 
@@ -81,11 +82,11 @@ ENV PATH=${CONDA_DIR}/bin:$PATH
 RUN cd /tmp && \
     wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-${MINICONDA_VERSION}.sh && \
     echo "${MINICONDA_MD5} *Miniconda3-${MINICONDA_VERSION}.sh" | md5sum -c - && \
-    /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_BASE_DIR && \
+    /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_TMP_DIR && \
     rm Miniconda3-${MINICONDA_VERSION}.sh && \
-    $CONDA_BASE_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
+    $CONDA_TMP_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
     rm -rf $HOME/.cache/* && \
-    rm -rf $CONDA_BASE_DIR/*
+    rm -rf $CONDA_TMP_DIR/*
 
 
 # Configration
