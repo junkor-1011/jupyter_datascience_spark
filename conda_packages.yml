@@ -1,5 +1,4 @@
 # Note: for Linux_x64
-# ToDo: numpy runtime warning
 name: jupyter_datascience_spark
 channels:
   - pyviz
@@ -17,7 +16,6 @@ dependencies:
   - fastparquet
   - python-hdfs
   # for jupyter (& utils)
-  # - jupyterlab==1.0.*
   - jupyterlab==1.*
   - nodejs
   - ipympl
