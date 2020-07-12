@@ -73,7 +73,7 @@ dependencies:
   - geoviews
   - geoplot
   - splot
-  # - geoalchemy2
+  - geoalchemy2
   # DB
   - sqlalchemy
   # - alembic
@@ -98,6 +98,7 @@ dependencies:
   # - python-language-server
   # pip-package
   - pip:
+    - graphviz
     - bhtsne
     - Boruta
     - mca
@@ -108,5 +109,8 @@ dependencies:
     - graphframes
     - jupyter-lsp
     - python-language-server[all]
+    - pytest
+    - tox
+    - ipdb
     # - sqlalchemy-views>=0.2
 prefix: /opt/conda
