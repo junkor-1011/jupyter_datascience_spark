@@ -105,9 +105,11 @@ ENV PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-${PY4J_VER}-sr
     PYSPARK_DRIVER=${CONDA_DIR}/bin/python
 
 # add jar
-RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12
+# RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12
+RUN echo "spark.jars.packages    graphframes:graphframes:0.8.0-spark3.0-s_2.12" >> $SPARK_HOME/conf/spark-defaults.conf
 
-# FONT
+# MATPLOTLIB JAPANESE FONT
+ENV MATPLOTLIBRC=$CONDA_DIR/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
 RUN mkdir ~/.fonts \
     && chown ${USER_NAME} ~/.fonts \
     && chmod 755 ~/.fonts \
@@ -116,7 +118,8 @@ RUN mkdir ~/.fonts \
     && mv ipaexg00401 -t ~/.fonts/ \
     && rm ipaexg00401.zip \
     && rm -rf ~/.cache/* \
-    && fc-cache -fv
+    && fc-cache -fv \
+    && echo "font.sans-serif : IPAexGothic" >> $MATPLOTLIBRC
 
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install jupyter-matplotlib && \
