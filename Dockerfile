@@ -139,7 +139,7 @@ RUN pip install \
         geospark && \
         rm -rf $HOME/.cache/pip/*
 
-# RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark2.4-s_2.11
+RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark2.4-s_2.11,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1
 
 EXPOSE 8888
 
