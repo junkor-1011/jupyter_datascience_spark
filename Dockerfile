@@ -116,10 +116,12 @@ RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
 # RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark2.4-s_2.11,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1" >> $SPARK_HOME/conf/spark-defaults.conf && \
 #     chmod +r $SPARK_HOME/conf/spark-defaults.conf
 
+# add jupyter-lsp config
+COPY ./pycodestyle /home/$USER_NAME/.config/pycodestyle
 
 # Configration
 USER ${USER_UID}
-
+WORKDIR $HOME
 
 # pyspark
 ARG PY4J_VER=0.10.9
