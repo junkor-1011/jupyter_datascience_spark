@@ -12,6 +12,4 @@ fi
 tar -czh . | docker build \
         -t ${IMAGE_TAG:-jupyter_datascience_spark} \
         --build-arg BASE_IMAGE=${BASE_IMAGE:-adoptopenjdk:8-jre-hotspot-bionic} \
-        --build-arg USER_UID=${USER_UID:-1000} \
-        --build-arg PASSWD=${PASSWD:-password} \
         -
