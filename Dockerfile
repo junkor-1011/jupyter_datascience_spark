@@ -104,8 +104,8 @@ RUN mkdir ~/.fonts \
 
 # APACHE SPARK
 USER root
-ARG SPARK_VERSION=3.0.0
-ARG HADOOP_VERSION=3.2
+ARG SPARK_VERSION=2.4.6
+ARG HADOOP_VERSION=2.7
 ENV SPARK_HOME=/usr/local/spark
 RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
     && tar xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
@@ -113,8 +113,8 @@ RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
 # add jar
-# RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark2.4-s_2.11,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1" >> $SPARK_HOME/conf/spark-defaults.conf && \
-#     chmod +r $SPARK_HOME/conf/spark-defaults.conf
+RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark2.4-s_2.11,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1" >> $SPARK_HOME/conf/spark-defaults.conf && \
+    chmod +r $SPARK_HOME/conf/spark-defaults.conf
 
 # add jupyter-lsp config
 COPY ./pycodestyle /home/$USER_NAME/.config/pycodestyle
@@ -124,7 +124,7 @@ USER ${USER_UID}
 WORKDIR $HOME
 
 # pyspark
-ARG PY4J_VER=0.10.9
+ARG PY4J_VER=0.10.7
 # ENV SPARK_HOME=/usr/local/spark
 ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
     JAVA_HOME=/opt/java/openjdk \
@@ -134,12 +134,12 @@ ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M 
     PYSPARK_DRIVER=${CONDA_DIR}/bin/python
 
 # pip for additional pyspark-packages
-# RUN pip install \
-#         graphframes \
-#         geospark && \
-#         rm -rf $HOME/.cache/pip/*
+RUN pip install \
+        graphframes \
+        geospark && \
+        rm -rf $HOME/.cache/pip/*
 
-# RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12
+# RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark2.4-s_2.11
 
 EXPOSE 8888
 
