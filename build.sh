@@ -10,6 +10,6 @@ fi
 
 # ref: https://blog.kkty.jp/entry/2019/06/16/214951
 tar -czh . | docker build \
-        -t ${IMAGE_TAG:-jupyter_datascience_spark24} \
+        -t ${IMAGE_TAG:-jupyter_datascience_spark24_openj9} \
         --build-arg BASE_IMAGE=${BASE_IMAGE:-adoptopenjdk:8-jre-openj9-bionic} \
         -
