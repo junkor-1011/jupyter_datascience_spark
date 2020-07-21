@@ -1,2 +1,6 @@
 README*
 build.sh
+.gitignore
+test/*
+_conda_local/*
+_build_envs/*

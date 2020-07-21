@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=adoptopenjdk:8-jre-hotspot-bionic
+ARG BASE_IMAGE=adoptopenjdk:8u252-b09-jre-hotspot-bionic
 FROM ${BASE_IMAGE}
 
 # system update & package install
@@ -59,7 +59,7 @@ COPY ./conda_packages.yml /tmp/conda_packages.yml
 RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc
 
 
-USER ${USER_UID}
+USER ${USER_NAME}
 
 WORKDIR $HOME
 # miniconda
@@ -120,7 +120,7 @@ RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
 COPY ./pycodestyle /home/$USER_NAME/.config/pycodestyle
 
 # Configration
-USER ${USER_UID}
+USER ${USER_NAME}
 WORKDIR $HOME
 
 # pyspark
