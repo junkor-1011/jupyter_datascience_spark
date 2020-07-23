@@ -17,5 +17,5 @@ image for datascience & datavisualization with jupyterlab, pyspark, e.t.c.
         - `adoptopenjdk(openj9)`
     - [azul/zulu-openjdk](https://hub.docker.com/r/azul/zulu-openjdk)
 - conda packages(yaml)
-    - [for development](./conda_packages.yml)
-    - [freeze env](./conda_packages_freeze.yml)
+    - [for development](./Spark3/conda_packages.yml)
+    - [freeze env](./Spark3/conda_packages_freeze.yml)
