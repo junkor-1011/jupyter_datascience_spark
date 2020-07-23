@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=adoptopenjdk:8u252-b09-jre-hotspot-bionic
+ARG BASE_IMAGE=adoptopenjdk:8u262-b10-jre-hotspot-bionic
 FROM ${BASE_IMAGE}
 
 # system update & package install
@@ -105,7 +105,7 @@ RUN mkdir ~/.fonts \
 # APACHE SPARK
 USER root
 ARG SPARK_VERSION=3.0.0
-ARG HADOOP_VERSION=3.2
+ARG HADOOP_VERSION=2.7
 ENV SPARK_HOME=/usr/local/spark
 RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
     && tar xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
