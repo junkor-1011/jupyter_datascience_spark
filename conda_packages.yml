@@ -52,7 +52,7 @@ dependencies:
   - tensorflow-datasets
   # plot & visualization
   - seaborn
-  - matplotlib
+  - matplotlib==3.2.*
   - bokeh
   - plotly
   - holoviews
