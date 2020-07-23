@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=adoptopenjdk:8u262-b10-jre-hotspot-bionic
+ARG BASE_IMAGE=azul/zulu-openjdk:8
 FROM ${BASE_IMAGE}
 
 # system update & package install

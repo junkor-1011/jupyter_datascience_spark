@@ -12,5 +12,5 @@ fi
 tar -czh . | docker build \
         -t ${IMAGE_TAG:-jupyter_datascience_spark} \
         --build-arg CONDA_YAML=${CONDA_YAML:-'./conda_packages.yml'} \
-        --build-arg BASE_IMAGE=${BASE_IMAGE:-adoptopenjdk:8u262-b10-jre-hotspot-bionic} \
+        --build-arg BASE_IMAGE=${BASE_IMAGE:-azul/zulu-openjdk:8} \
         -
