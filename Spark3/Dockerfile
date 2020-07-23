@@ -117,13 +117,23 @@ RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark3.0-s_2.12,org.
 # add jupyter-lsp config
 COPY ./pycodestyle /home/$USER_NAME/.config/pycodestyle
 
-# MATPLOTLIB JAPANESE FONT
-ENV MATPLOTLIBRC=$CONDA_DIR/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
-RUN echo "font.sans-serif : IPAexGothic" >> $MATPLOTLIBRC
+# MPLCONFIGDIR
+ENV MPLCONFIGDIR=/home/$USER_NAME/.config/matplotlib
+RUN mkdir -p $MPLCONFIGDIR && \
+    chown -R $USER_NAME:$USER_NAME $MPLCONFIGDIR
 
-# Configration
+# ***
 USER ${USER_NAME}
 WORKDIR $HOME
+
+# MATPLOTLIB JAPANESE FONT
+ENV MPLCONFIGDIR=$HOME/.config/matplotlib
+RUN mkdir -p $MPLCONFIGDIR
+ENV MATPLOTLIBRC=$MPLCONFIGDIR/matplotlibrc
+RUN echo "font.sans-serif : IPAexGothic" >> $MATPLOTLIBRC
+
+
+# Configration
 
 # pyspark
 ARG PY4J_VER=0.10.9
