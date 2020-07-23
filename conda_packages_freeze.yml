@@ -311,7 +311,7 @@ dependencies:
   - pyshp=2.1.0=py_0
   - pysocks=1.7.1=py37hc8dfbb8_1
   - pytables=3.6.1=py37h9f153d1_1
-  - python=3.7.6=cpython_h8356626_6
+  - python=3.7.8=h6f2ec95_0_cpython
   - python-dateutil=2.8.1=py_0
   - python-editor=1.0.4=py_0
   - python-hdfs=2.5.7=py_0
