@@ -111,7 +111,7 @@ RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
 # add jar
-RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark2.4-s_2.11,org.postgresql:postgresql:42.2.5,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1" >> $SPARK_HOME/conf/spark-defaults.conf && \
+RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark2.4-s_2.11,org.postgresql:postgresql:42.2.14,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1" >> $SPARK_HOME/conf/spark-defaults.conf && \
     chmod +r $SPARK_HOME/conf/spark-defaults.conf
 
 # add jupyter-lsp config
@@ -151,7 +151,7 @@ RUN pip install \
         graphframes && \
         rm -rf $HOME/.cache/pip/*
 
-RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12,org.postgresql:postgresql:42.2.5,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1
+RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12,org.postgresql:postgresql:42.2.14,org.datasyslab:geospark:1.3.1,org.datasyslab:geospark-sql_2.3:1.3.1,org.datasyslab:geospark-viz_2.3:1.3.1
 
 EXPOSE 8888
 
