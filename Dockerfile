@@ -31,9 +31,9 @@ RUN chmod +x /usr/bin/tini
 # ref:
 # https://zukucode.com/2019/06/docker-user.html
 # https://qiita.com/Riliumph/items/3b09e0804d7a04dff85b
-ENV USER_NAME=user \
-    USER_UID=1000 \
-    PASSWD=password
+ENV USER_NAME=user
+ARG USER_UID=1000
+ARG PASSWD=password
 # If you need, use 'usermod' at last to change them.
 
 RUN useradd -m -s /bin/bash -u ${USER_UID} ${USER_NAME} && \
@@ -52,7 +52,10 @@ RUN mkdir -p $CONDA_DIR && \
     chown $USER_NAME:$USER_UID $CONDA_DIR && \
     chown $USER_NAME:$USER_UID $CONDA_TMP_DIR
 # conda package-info
-COPY ./conda_packages.yml /tmp/conda_packages.yml
+ARG CONDA_YAML="./conda_packages_freeze.yml"
+COPY $CONDA_YAML /tmp/conda_packages.yml
+# prevent pip-error (tmp)
+RUN sed -i -e 's/python-graphviz/graphviz/' /tmp/conda_packages.yml
 
 
 # ubuntu color-prompt
