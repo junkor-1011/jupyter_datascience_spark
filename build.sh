@@ -10,7 +10,7 @@ fi
 
 # ref: https://blog.kkty.jp/entry/2019/06/16/214951
 tar -czh . | docker build \
-        -t ${IMAGE_TAG:-jupyter_datascience_spark} \
+        -t ${IMAGE_TAG:-jupyter_datascience_spark24} \
         --build-arg CONDA_YAML=${CONDA_YAML:-'./conda_packages.yml'} \
         --build-arg BASE_IMAGE=${BASE_IMAGE:-adoptopenjdk:8u262-b10-jre-hotspot-bionic} \
         -
