@@ -130,6 +130,7 @@ ARG PY4J_VER=0.10.9
 # ENV SPARK_HOME=/usr/local/spark
 ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
     JAVA_HOME=/opt/java/openjdk \
+    # JAVA_HOME=/usr/lib/jvm/zulu-8-amd64 \
     PATH=${SPARK_HOME}/bin:/opt/java/openjdk/bin:$PATH \
     PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-${PY4J_VER}-src.zip \
     PYSPARK_PYTHON=${CONDA_DIR}/bin/python \
