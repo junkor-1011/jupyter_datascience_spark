@@ -141,6 +141,7 @@ ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M 
     JAVA_HOME=/opt/java/openjdk \
     # JAVA_HOME=/usr/lib/jvm/zulu-8-amd64 \
     PATH=${SPARK_HOME}/bin:/opt/java/openjdk/bin:$PATH \
+    # PATH=${SPARK_HOME}/bin:/usr/lib/jvm/zulu-8-amd64/bin:$PATH \
     PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-${PY4J_VER}-src.zip \
     PYSPARK_PYTHON=${CONDA_DIR}/bin/python \
     PYSPARK_DRIVER=${CONDA_DIR}/bin/python
