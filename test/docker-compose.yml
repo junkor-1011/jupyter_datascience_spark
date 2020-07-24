@@ -2,7 +2,7 @@ version: '3'
 
 services:
   jupyter_test:
-    image: ${image:-jupyter_datascience_spark:latest}
+    image: ${image:-jupyter_datascience_spark3:latest}
     volumes:
       - ./work:/home/${user:-user}/work
     privileged: true
