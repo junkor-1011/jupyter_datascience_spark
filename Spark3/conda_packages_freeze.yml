@@ -12,7 +12,7 @@ dependencies:
   - absl-py=0.9.0=py37hc8dfbb8_1
   - affine=2.3.0=py_0
   - alembic=1.4.2=pyh9f0ad1d_0
-  - arrow-cpp=0.17.1=py37h1234567_11_cpu
+  - arrow-cpp=1.0.0=py37h1234567_0_cpu
   - astor=0.8.1=pyh9f0ad1d_0
   - astunparse=1.6.3=py_0
   - attrs=19.3.0=py_0
@@ -51,7 +51,7 @@ dependencies:
   - cmd2=0.9.22=py37_0
   - colorama=0.4.3=py_0
   - colorcet=2.0.2=py_0
-  - colorlog=4.1.0=py37hc8dfbb8_2
+  - colorlog=4.2.1=py37hc8dfbb8_0
   - conda=4.8.3=py37hc8dfbb8_1
   - conda-package-handling=1.6.0=py37h8f50634_2
   - contextily=1.0.0=py_0
@@ -139,7 +139,7 @@ dependencies:
   - importlib-metadata=1.7.0=py37hc8dfbb8_0
   - importlib_metadata=1.7.0=0
   - ipykernel=5.3.4=py37h43977f1_0
-  - ipyleaflet=0.13.1=pyh9f0ad1d_0
+  - ipyleaflet=0.13.2=pyh9f0ad1d_0
   - ipympl=0.5.7=pyh9f0ad1d_1
   - ipyparallel=6.3.0=py37hc8dfbb8_0
   - ipython=7.16.1=py37h43977f1_0
@@ -177,7 +177,7 @@ dependencies:
   - libffi=3.2.1=he1b5a44_1007
   - libgcc-ng=9.2.0=h24d8f2e_2
   - libgdal=2.4.4=h5439ffd_1
-  - libgfortran-ng=7.5.0=hdf63c60_6
+  - libgfortran-ng=7.5.0=hdf63c60_9
   - libgomp=9.2.0=h24d8f2e_2
   - libiconv=1.15=h516909a_1006
   - libkml=1.3.0=hb574062_1011
@@ -185,7 +185,7 @@ dependencies:
   - liblapacke=3.8.0=17_openblas
   - libllvm9=9.0.1=he513fc3_1
   - libnetcdf=4.7.4=nompi_h9f9fd6a_101
-  - libopenblas=0.3.10=pthreads_hb3c22a3_3
+  - libopenblas=0.3.10=pthreads_hb3c22a3_4
   - libopencv=4.2.0=py37_5
   - libpng=1.6.37=hed695b0_1
   - libpq=12.3=h5513abc_0
@@ -198,6 +198,7 @@ dependencies:
   - libstdcxx-ng=9.2.0=hdf63c60_2
   - libtiff=4.1.0=hc3755c2_3
   - libtool=2.4.6=h14c3975_1002
+  - libutf8proc=2.5.0=h516909a_2
   - libuuid=2.32.1=h14c3975_1000
   - libuv=1.34.0=h516909a_0
   - libwebp=1.0.2=h56121f0_5
@@ -236,11 +237,11 @@ dependencies:
   - nodejs=13.13.0=hf5d1a2b_0
   - nose=1.3.7=py37hc8dfbb8_1004
   - notebook=6.0.3=py37hc8dfbb8_1
-  - nspr=4.26=he1b5a44_0
+  - nspr=4.27=he1b5a44_0
   - nss=3.47=he751ad9_0
   - numba=0.50.1=py37h0da4684_1
   - numexpr=2.7.1=py37h0da4684_1
-  - numpy=1.19.0=py37h8960a57_0
+  - numpy=1.19.1=py37h8960a57_0
   - oauthlib=3.0.1=py_0
   - olefile=0.46=py_0
   - opencv=4.2.0=py37_5
@@ -253,13 +254,13 @@ dependencies:
   - owslib=0.20.0=py_0
   - packaging=20.4=pyh9f0ad1d_0
   - pandas=1.0.5=py37h0da4684_0
-  - pandoc=2.10=h14c3975_0
+  - pandoc=2.10.1=h516909a_0
   - pandocfilters=1.4.2=py_1
   - panel=0.9.7=py_0
   - pango=1.40.14=he7ab937_1005
   - param=1.9.3=py_0
   - parquet-cpp=1.5.1=2
-  - parso=0.7.0=pyh9f0ad1d_0
+  - parso=0.7.1=pyh9f0ad1d_0
   - partd=1.1.0=py_0
   - patsy=0.5.1=py_0
   - pbr=5.4.5=pyh9f0ad1d_0
@@ -286,7 +287,7 @@ dependencies:
   - ptyprocess=0.6.0=py_1001
   - py-opencv=4.2.0=py37h43977f1_5
   - py-xgboost=1.1.1=py37hc8dfbb8_0
-  - pyarrow=0.17.1=py37h1234567_11_cpu
+  - pyarrow=1.0.0=py37h1234567_0_cpu
   - pyasn1=0.4.8=py_0
   - pyasn1-modules=0.2.7=py_0
   - pycairo=1.19.1=py37h01af8b0_3
@@ -338,7 +339,7 @@ dependencies:
   - ruamel_yaml=0.15.80=py37h8f50634_1001
   - scikit-image=0.17.2=py37h0da4684_1
   - scikit-learn=0.23.1=py37h8a51577_0
-  - scipy=1.5.1=py37ha3d9a3c_0
+  - scipy=1.5.2=py37hb14ef9d_0
   - seaborn=0.10.1=1
   - seaborn-base=0.10.1=py_1
   - selenium=3.141.0=py37h8f50634_1001
@@ -418,21 +419,14 @@ dependencies:
   - zlib=1.2.11=h516909a_1006
   - zstd=1.4.5=h6597ccf_1
   - pip:
-    - appdirs==1.4.4
     - astroid==2.4.2
     - autopep8==1.5.3
     - bhtsne==0.1.9
     - boruta==0.3
-    - distlib==0.3.1
-    - filelock==3.0.12
     - flake8==3.8.3
-    - graphframes==0.6
     - ipdb==0.13.3
-    - isort==4.3.21
     - jupyter-lsp==0.9.0
-    - lazy-object-proxy==1.4.3
     - mca==1.0.3
-    - mccabe==0.6.1
     - more-itertools==8.4.0
     - pandas-bokeh==0.5
     - pluggy==0.13.1
@@ -454,9 +448,7 @@ dependencies:
     - snowballstemmer==2.0.0
     - toml==0.10.1
     - tox==3.18.0
-    - typed-ast==1.4.1
     - ujson==1.35
-    - virtualenv==20.0.27
     - xlrd==1.2.0
     - xlwt==1.3.0
     - yapf==0.30.0

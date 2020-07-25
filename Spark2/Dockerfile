@@ -142,7 +142,8 @@ ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M 
     PATH=${SPARK_HOME}/bin:/opt/java/openjdk/bin:$PATH \
     PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-${PY4J_VER}-src.zip \
     PYSPARK_PYTHON=${CONDA_DIR}/bin/python \
-    PYSPARK_DRIVER=${CONDA_DIR}/bin/python
+    PYSPARK_DRIVER=${CONDA_DIR}/bin/python \
+    ARROW_PRE_0_15_IPC_FORMAT=1
 
 # pip for additional pyspark-packages
 RUN pip install \
