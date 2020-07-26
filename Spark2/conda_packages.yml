@@ -116,4 +116,3 @@ dependencies:
     - tox
     - ipdb
     # - sqlalchemy-views>=0.2
-prefix: /opt/conda
