@@ -17,8 +17,7 @@ dependencies:
   - python-hdfs
   - koalas
   # for jupyter (& utils)
-  # - jupyterlab==1.*
-  - jupyterlab==2.1.*
+  - jupyterlab==1.*
   - nodejs
   - ipympl
   - ipywidgets
@@ -93,14 +92,12 @@ dependencies:
   - scikit-image
   - opencv
   - nltk
-  - xlrd
-  - xlwt
   # DEBUG
-  - pytest
-  - tox
-  - ipdb
-  - pudb
   - python-language-server
+  # - pytest
+  # - tox
+  # - ipdb
+  # - pudb
   # pip-package
   - pip:
     - graphviz
@@ -110,13 +107,13 @@ dependencies:
     - pandas-bokeh
     - py_d3
     - smopy
-    # - xlrd
-    # - xlwt
+    - xlrd
+    - xlwt
     # - mplleaflet
     # - graphframes
     - jupyter-lsp
     # - python-language-server[all]
-    # - pytest
-    # - tox
-    # - ipdb
+    - pytest
+    - tox
+    - ipdb
     # - sqlalchemy-views>=0.2
