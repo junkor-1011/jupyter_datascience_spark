@@ -17,7 +17,8 @@ dependencies:
   - python-hdfs
   - koalas
   # for jupyter (& utils)
-  - jupyterlab==1.*
+  # - jupyterlab==1.*
+  - jupyterlab==2.1.*
   - nodejs
   - ipympl
   - ipywidgets
@@ -25,7 +26,7 @@ dependencies:
   - memory_profiler
   - pyprind
   # data-science & data-handling (General)
-  - pandas>=1.0
+  - pandas
   - numpy
   - scipy
   - dask
@@ -69,7 +70,8 @@ dependencies:
   - geojson
   - geopy
   - shapely
-  - gdal==2.*
+  # - gdal==2.*
+  - gdal
   - cartopy
   - geoviews
   - geoplot
@@ -91,12 +93,14 @@ dependencies:
   - scikit-image
   - opencv
   - nltk
+  - xlrd
+  - xlwt
   # DEBUG
-  # - pytest
-  # - tox
-  # - ipdb
-  # - pudb
-  # - python-language-server
+  - pytest
+  - tox
+  - ipdb
+  - pudb
+  - python-language-server
   # pip-package
   - pip:
     - graphviz
@@ -106,13 +110,13 @@ dependencies:
     - pandas-bokeh
     - py_d3
     - smopy
-    - xlrd
-    - xlwt
+    # - xlrd
+    # - xlwt
     # - mplleaflet
     # - graphframes
     - jupyter-lsp
-    - python-language-server[all]
-    - pytest
-    - tox
-    - ipdb
+    # - python-language-server[all]
+    # - pytest
+    # - tox
+    # - ipdb
     # - sqlalchemy-views>=0.2
