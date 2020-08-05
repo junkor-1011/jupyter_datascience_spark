@@ -12,7 +12,7 @@ dependencies:
   - absl-py=0.9.0=py37hc8dfbb8_1
   - affine=2.3.0=py_0
   - alembic=1.4.2=pyh9f0ad1d_0
-  - argon2-cffi=20.1.0=py37h8f50634_0
+  - argon2-cffi=20.1.0=py37h8f50634_1
   - arrow-cpp=1.0.0=py37h1234567_1_cpu
   - astor=0.8.1=pyh9f0ad1d_0
   - astroid=2.3.3=py37_1
@@ -25,7 +25,7 @@ dependencies:
   - backports.functools_lru_cache=1.6.1=py_0
   - beautifulsoup4=4.9.1=py37hc8dfbb8_0
   - binutils_impl_linux-64=2.34=h2122c62_9
-  - binutils_linux-64=2.34=h47ac705_25
+  - binutils_linux-64=2.34=h47ac705_26
   - bleach=3.1.5=pyh9f0ad1d_0
   - blinker=1.4=py_1
   - blosc=1.20.0=he1b5a44_0
@@ -42,7 +42,7 @@ dependencies:
   - cachetools=4.1.1=py_0
   - cairo=1.16.0=hcf35c78_1003
   - cartopy=0.18.0=py37h4b180d9_0
-  - catboost=0.23.2=py37hc8dfbb8_0
+  - catboost=0.24=py37hc8dfbb8_0
   - certifi=2020.6.20=py37hc8dfbb8_0
   - cffi=1.14.1=py37h2b28604_0
   - cfitsio=3.470=hce51eda_6
@@ -98,7 +98,7 @@ dependencies:
   - future=0.18.2=py37hc8dfbb8_1
   - gast=0.3.3=py_0
   - gcc_impl_linux-64=9.3.0=ha2fd2e4_14
-  - gcc_linux-64=9.3.0=h70133e4_25
+  - gcc_linux-64=9.3.0=h44160b2_26
   - gdal=3.0.4=py37h4b180d9_10
   - geckodriver=0.27.0=he1b5a44_0
   - geoalchemy2=0.6.3=py_0
@@ -131,7 +131,7 @@ dependencies:
   - gst-plugins-base=1.14.5=h0935bb2_2
   - gstreamer=1.14.5=h36ae1b5_2
   - gxx_impl_linux-64=9.3.0=hde52e87_14
-  - gxx_linux-64=9.3.0=ha9dd585_25
+  - gxx_linux-64=9.3.0=ha9dd585_26
   - h5py=2.10.0=nompi_py37h90cd8ad_104
   - harfbuzz=2.4.0=h9f30f68_3
   - hdf4=4.2.13=hf30be14_1003
@@ -153,7 +153,7 @@ dependencies:
   - ipython=7.17.0=py37hc6149b9_0
   - ipython_genutils=0.2.0=py_1
   - ipywidgets=7.5.1=py_0
-  - isort=5.2.2=py37hc8dfbb8_0
+  - isort=5.3.0=py37hc8dfbb8_0
   - jasper=1.900.1=h07fcdf6_1006
   - jedi=0.17.2=py37hc8dfbb8_0
   - jinja2=2.11.2=pyh9f0ad1d_0
@@ -166,7 +166,7 @@ dependencies:
   - jupyter_client=6.1.6=py_0
   - jupyter_console=6.1.0=py_1
   - jupyter_core=4.6.3=py37hc8dfbb8_1
-  - jupyterlab=1.2.16=py_0
+  - jupyterlab=2.2.2=py_0
   - jupyterlab_server=1.2.0=py_0
   - jxrlib=1.1=h516909a_2
   - kealib=1.4.13=h33137a7_1
