@@ -83,10 +83,9 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install jupyter-matplotlib && \
     jupyter labextension install @lckr/jupyterlab_variableinspector && \
     jupyter labextension install @jupyterlab/toc && \
-    jupyter labextension install jupyterlab_vim && \
-    jupyter labextension install @krassowski/jupyterlab-lsp@0.8.0 && \
+    jupyter labextension install @axlair/jupyterlab_vim && \
+    jupyter labextension install @krassowski/jupyterlab-lsp && \
     rm -rf ~/.cache/yarn/*
-# RUN jupyter labextension install @krassowski/jupyterlab-lsp     # for JupyterLab 2.x
 
 # install IPAex-Gothic (for Japanese)
 RUN mkdir ~/.fonts \
