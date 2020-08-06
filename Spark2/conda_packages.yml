@@ -91,12 +91,6 @@ dependencies:
   - scikit-image
   - opencv
   - nltk
-  # DEBUG
-  - python-language-server
-  # - pytest
-  # - tox
-  # - ipdb
-  # - pudb
   # pip-package
   - pip:
     - graphviz
@@ -110,9 +104,11 @@ dependencies:
     - xlwt
     # - mplleaflet
     # - graphframes
+    # DEBUG
     - jupyter-lsp
-    # - python-language-server[all]
+    - python-language-server[all]
     - pytest
     - tox
     - ipdb
+    - pudb
     # - sqlalchemy-views>=0.2
