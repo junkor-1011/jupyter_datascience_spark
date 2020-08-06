@@ -17,7 +17,7 @@ dependencies:
   - python-hdfs
   - koalas
   # for jupyter (& utils)
-  - jupyterlab==1.*
+  - jupyterlab
   - nodejs
   - ipympl
   - ipywidgets
@@ -69,7 +69,6 @@ dependencies:
   - geojson
   - geopy
   - shapely
-  # - gdal==2.*
   - gdal
   - cartopy
   - geoviews
