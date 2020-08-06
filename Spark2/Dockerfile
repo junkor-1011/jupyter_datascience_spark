@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=adoptopenjdk:8u262-b10-jre-hotspot-bionic
+ARG BASE_IMAGE=adoptopenjdk:8-jre-openj9-bionic
 FROM ${BASE_IMAGE}
 
 # system update & package install
