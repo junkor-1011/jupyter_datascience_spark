@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=adoptopenjdk:8u262-b10-jre-hotspot-bionic
+ARG BASE_IMAGE=adoptopenjdk:8-jre-hotspot-bionic
 FROM ${BASE_IMAGE}
 
 # system update & package install
@@ -74,6 +74,7 @@ RUN cd /tmp && \
     echo "${MINICONDA_MD5} *Miniconda3-${MINICONDA_VERSION}.sh" | md5sum -c - && \
     /bin/bash Miniconda3-${MINICONDA_VERSION}.sh -f -b -p $CONDA_TMP_DIR && \
     rm Miniconda3-${MINICONDA_VERSION}.sh && \
+    $CONDA_TMP_DIR/bin/conda update -n base -c defaults conda && \
     $CONDA_TMP_DIR/bin/conda env create -f /tmp/conda_packages.yml --prefix $CONDA_DIR && \
     rm -rf $HOME/.cache/* && \
     rm -rf $CONDA_TMP_DIR/*
@@ -130,7 +131,6 @@ ENV MPLCONFIGDIR=$HOME/.config/matplotlib
 RUN mkdir -p $MPLCONFIGDIR
 ENV MATPLOTLIBRC=$MPLCONFIGDIR/matplotlibrc
 RUN echo "font.sans-serif : IPAexGothic" >> $MATPLOTLIBRC
-
 
 # Configration
 

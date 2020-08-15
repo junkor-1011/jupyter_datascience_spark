@@ -17,7 +17,7 @@ dependencies:
   - python-hdfs
   - koalas
   # for jupyter (& utils)
-  - jupyterlab
+  - jupyterlab==2.1.*
   - nodejs
   - ipympl
   - ipywidgets
@@ -48,7 +48,7 @@ dependencies:
   - somoclu
   # - hyperopt
   # Machine Learning (tensorflow)
-  - tensorflow==2.*
+  - tensorflow
   - tensorflow-datasets
   # plot & visualization
   - seaborn
