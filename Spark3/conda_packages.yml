@@ -48,7 +48,7 @@ dependencies:
   - somoclu
   # - hyperopt
   # Machine Learning (tensorflow)
-  - tensorflow
+  - tensorflow==2.*
   - tensorflow-datasets
   # plot & visualization
   - seaborn
