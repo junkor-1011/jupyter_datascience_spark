@@ -18,6 +18,6 @@ image for datascience & datavisualization with jupyterlab, pyspark, e.t.c.
     - ~[azul/zulu-openjdk](https://hub.docker.com/r/azul/zulu-openjdk)~
         - (Under consideration)
 - conda packages(yaml)
-    - [freeze env](https://github.com/junkor-1011/jupyter_datascience_spark/blob/0.0.11-rc2/Spark2/conda_packages_freeze.yml)
+    - [freeze env](https://github.com/junkor-1011/jupyter_datascience_spark/blob/0.0.11/Spark2/conda_packages_freeze.yml)
         - using in autobuild
-    - [for development](https://github.com/junkor-1011/jupyter_datascience_spark/blob/0.0.11-rc2/Spark2/conda_packages.yml)
+    - [for development](https://github.com/junkor-1011/jupyter_datascience_spark/blob/0.0.11/Spark2/conda_packages.yml)
