@@ -17,7 +17,7 @@ dependencies:
   - python-hdfs
   - koalas
   # for jupyter (& utils)
-  - jupyterlab
+  - jupyterlab==2.1.*
   - nodejs
   - ipympl
   - ipywidgets
