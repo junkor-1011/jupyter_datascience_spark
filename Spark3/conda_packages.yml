@@ -102,6 +102,8 @@ dependencies:
     - smopy
     - xlrd
     - xlwt
+    - mapbox-vector-tile
+    - geobuf
     # - mplleaflet
     # - graphframes
     # DEBUG
