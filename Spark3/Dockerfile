@@ -111,7 +111,7 @@ RUN curl -O http://apache.mirror.iphh.net/spark/spark-${SPARK_VERSION}/spark-${S
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
 
 # add jar
-RUN echo "spark.jars.packages graphframes:graphframes:0.8.0-spark3.0-s_2.12,org.postgresql:postgresql:42.2.14" >> $SPARK_HOME/conf/spark-defaults.conf && \
+RUN echo "spark.jars.packages graphframes:graphframes:0.8.1-spark3.0-s_2.12,org.postgresql:postgresql:42.2.16" >> $SPARK_HOME/conf/spark-defaults.conf && \
     chmod +r $SPARK_HOME/conf/spark-defaults.conf
 
 # add jupyter-lsp config
@@ -150,7 +150,7 @@ RUN pip install \
         graphframes && \
         rm -rf $HOME/.cache/pip/*
 
-RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.0-spark3.0-s_2.12,org.postgresql:postgresql:42.2.14
+RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.8.1-spark3.0-s_2.12,org.postgresql:postgresql:42.2.16
 
 EXPOSE 8888
 
