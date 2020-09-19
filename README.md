@@ -8,9 +8,9 @@ image for datascience & datavisualization with jupyterlab, pyspark, e.t.c.
 - all images are based on `Ubuntu`
 - `Python3.7.*`
 - [Apache Spark](https://spark.apache.org/)
-    - [(using mirror)](http://apache.mirror.iphh.net/spark/)
-    - `3.0.0` with `hadoop3.2`
-    - `2.4.6` with `hadoop2.7`
+    - [(using mirror)](https://downloads.apache.org/spark/)
+    - `3.0.1` with `hadoop3.2`
+    - `2.4.7` with `hadoop2.7`
 - Java8(openjdk)
     - [adoptopenjdk](https://hub.docker.com/_/adoptopenjdk?tab=tags&page=1&name=bionic)
         - `adoptopenjdk(hotspot)` (main)
